@@ -19,7 +19,7 @@ public class NumberGuessingGame {
        //CONSTANTS
        final short MINGUESS= 1;
        final short MAXGUESS= 100;
-       final short guessAttempts=0;
+       int guessAttempts =0;
        
        //USER'S GUESSED NUMBER
        short guess;
@@ -31,31 +31,37 @@ public class NumberGuessingGame {
        Scanner input = new Scanner(System.in);
        
         int i = 1;
-
+        System.out.println("I'm thinking of a number between 1 and 100");
         while(i>0) { 
             
             //Generate a number between 1 and 100
             int randomNum = rand.nextInt(100)+1;
             //PROMPT USER FOR INPUT
-            System.out.println("Enter your Geuss");
+            System.out.print("Enter your geuss: ");
             guess = input.nextShort();
+            if(guess!=randomNum){
+            guessAttempts++;
+            }
+            System.out.print("Guess attempts: " + guessAttempts);
+            if(guess == randomNum ){
+                System.out.println("\nYour guessed the right number!");
+           
+            System.out.println("\nYou guessed it in "+ guessAttempts +" attempts.");
+            }
 
             if(guess>MAXGUESS){
-                System.out.println("Your guess is too high");
+                System.out.println("\nToo high! Try again.");
             }
             
             if(guess<MINGUESS){
-                System.out.println("Your guess is too low");
+                System.out.println("\nToo low! Try again.");
             }
             
             if(guess!=randomNum){
-                System.out.println("you guessed the wrong number!");
+                System.out.println("\nyou guessed the wrong number!");
                 
-            }else
-                System.out.println("Your guessed the right number!");
-            
-             int attempts = i++;
-            System.out.println("Your attempts: "+attempts);  
+            }
+
         }
     }
 }
